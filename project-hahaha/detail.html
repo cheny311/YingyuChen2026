@@ -36,17 +36,30 @@
     }
 
     /* ===== Left: Image Grid ===== */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
+.grid{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr); /* 2/3/4都行 */
+  gap: 16px;
+}
 
-    .box {
-      aspect-ratio: 1 / 1;
-      border: 1px solid #aaa;
-      background: transparent;
-    }
+.box{
+  border: 1px solid #000;
+  padding: 2px;              /* 框比内容大 2px */
+  box-sizing: border-box;
+  background: #fafafa;
+
+  aspect-ratio: 4 / 5;       /* 统一每格大小（你可改 1/1 或 16/9） */
+  overflow: hidden;
+}
+
+.box img,
+.box video{
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;       /* ✅ 完整显示 */
+  background: #00000000;          /* 视频/图片留空边时更好看 */
+}
 
     /* ===== Right Column ===== */
     .right {
@@ -114,21 +127,21 @@
 
     <!-- Left grid -->
     <div class="grid">
-      <div class="box"></div>
-      <div class="box"></div>
-      <div class="box"></div>
-      <div class="box"></div>
-      <div class="box"></div>
-      <div class="box"></div>
-      <div class="box"></div>
-      <div class="box"></div>
-      <div class="box"></div>
+      <div class="box"><img src="h32.JPG" alt="h32"></div>
+      <div class="box"><img src="h33.JPG" alt="h33"></div>
+      <div class="box"><img src="h34.JPG" alt="h34"></div>
+      <div class="box"><img src="h35.JPG" alt="h35"></div>
+      <div class="box"><img src="h36.JPG" alt="h36"></div>
+      <div class="box"><img src="h38.JPG" alt="h38"></div>
+      <div class="box"><img src="h59.JPG" alt="h59"></div>
+      <div class="box">  <video id="ha-video-2" src="h.mp4" autoplay loop muted playsinline></video></div>
+      <div class="box">  <video id="ha-video-2" src="hh.mp4" autoplay loop muted playsinline></video></div>
     </div>
 
     <!-- Right column -->
     <div class="right">
       <div class="project-list">
-        <p>这里是 project list</p>
+        <p>project list</p>
         <p>1</p>
         <p>2</p>
         <p>3</p>
@@ -147,33 +160,13 @@
         浪花淘尽英雄。几度夕阳红。
       </div>
 
-      <div class="numbers">
-        <div>1</div>
-        <div>2</div>
-        <div>3</div>
-        <div>4</div>
-        <div>5</div>
-        <div>6</div>
-        <div>7</div>
-        <div>8</div>
-        <div>9</div>
-        <div>10</div>
-        <div>11</div>
-        <div>12</div>
-        <div>13</div>
-        <div>14</div>
-      </div>
+ 
     </div>
-
-    <!-- Footer -->
-    <footer>
-      <div>返回上一级</div>
-      <div>
-        <a href="#">contact</a>
-        <a href="#">home</a>
-        <a href="#">read more</a>
-      </div>
-    </footer>
+ <footer class="bottom-nav">
+            <a href="../contact.html">contact</a>
+      <a href="../index.html">home</a>
+      <a href="read.html">README</a>
+        </footer>
 
   </div>
 </body>

@@ -49,7 +49,7 @@ body { font-family: "Tomorrow", "SimSun", "STSong", serif; background: #fff; ove
 .ha-svg { height: 100%; max-width: 400px; }
 .content-middle {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* 去掉中间列 */
+    grid-template-columns: 1fr 1fr 1fr; /* 左侧 P5 + 两个视频框 */
     align-items: center;
     gap: 30px;
     width: 100%;
@@ -76,13 +76,21 @@ body { font-family: "Tomorrow", "SimSun", "STSong", serif; background: #fff; ove
     transform: translate(-20px, -80%); /* 左移 20px、上移 80% */
 }
 
-.right-img {
+.video-box {
     width: 380px;
     height: 320px;
     font-size: 1.2rem;
     position: relative;
     z-index: 3;
+    cursor: grab;
+}
+
+.video-box.video-1 {
     transform: translate(-180px, -10%); /* 初始左移 180px，上移 10% */
+}
+
+.video-box.video-2 {
+    transform: translate(-40px, -10%); /* 轻微左移，上移 10% */
 }
 
 /* 底部文字排版 */
@@ -162,23 +170,19 @@ body { font-family: "Tomorrow", "SimSun", "STSong", serif; background: #fff; ove
     display: block;
     border: none;
 }
-
 .photo-frame {
-    margin: 20px auto 0;
-    width: 340px;
-    height: 240px;
+    display: inline-block;        /* 🔥 关键：由内容决定大小 */
     border: 1px solid #000;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    padding: 2px;                 /* 🔥 框比照片大 2px */
     background: #fafafa;
+    position: relative;
+    transform: translateY(-180px);
 }
 
 .photo-img {
-    max-width: 100%;
-    max-height: 100%;
-    display: block;
+    display: block;               /* 去掉 img 默认底部空隙 */
+    max-width: 440px;             /* 可选：你想限制最大尺寸 */
+    max-height: 480px;
 }
 
 .photo-hint {
@@ -227,4 +231,22 @@ body { font-family: "Tomorrow", "SimSun", "STSong", serif; background: #fff; ove
 
 .volume-label input[type="range"] {
     width: 70px; /* 缩短滑杆 */
+}
+
+.src-switch {
+    display: flex;
+    gap: 4px;
+}
+
+.src-btn {
+    padding: 3px 6px;
+    border: 1px solid #000;
+    background: #fff;
+    font-size: 10px;
+    cursor: pointer;
+}
+
+.src-btn.active {
+    background: #000;
+    color: #fff;
 }

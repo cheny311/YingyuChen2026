@@ -40,14 +40,27 @@
         <img src="ha.svg" alt="哈" class="ha-svg-file">
     </div>
 
-    <div class="box-img right-img">
+    <div class="box-img video-box video-1">
         <div class="ha-video">
-            <video id="ha-video" src="hahaha.mp4" autoplay loop muted playsinline></video>
+            <video id="ha-video-1" src="h.mp4" autoplay loop muted playsinline></video>
             <div class="video-controls">
-                <button id="btn-play">Pause</button>
-                <button id="btn-mute">Unmute</button>
+                <button id="btn-play-1">Pause</button>
+                <button id="btn-mute-1">Unmute</button>
                 <label class="volume-label">Vol
-                    <input id="volume-slider" type="range" min="0" max="1" step="0.05" value="0.5">
+                    <input id="volume-slider-1" type="range" min="0" max="1" step="0.05" value="0.5">
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="box-img video-box video-2">
+        <div class="ha-video">
+            <video id="ha-video-2" src="hahaha.mp4" autoplay loop muted playsinline></video>
+            <div class="video-controls">
+                <button id="btn-play-2">Pause</button>
+                <button id="btn-mute-2">Unmute</button>
+                <label class="volume-label">Vol
+                    <input id="volume-slider-2" type="range" min="0" max="1" step="0.05" value="0.5">
                 </label>
             </div>
         </div>
@@ -56,10 +69,12 @@
             </div>
         </main>
 
-        <div class="photo-frame">
-            <img src="ha.svg" alt="photo" class="photo-img">
-            <div class="photo-hint">点击查看更多照片</div>
-        </div>
+       <div class="photo-frame">
+        <p>click to see more</p>
+  <a href="detail.html">
+    <img src="h32.JPG" alt="photo" class="photo-img">
+  </a>
+</div>
 
         <section class="footer-content">
             <div class="vertical-text-group">
@@ -77,30 +92,60 @@
         </section>
 
         <footer class="bottom-nav">
-            <a href="#">contact</a>
-            <a href="#">home</a>
-            <a href="#" class="active">readmore</a>
+            <a href="../contact.html">contact</a>
+      <a href="../index.html">home</a>
+      <a href="read.html">README</a>
         </footer>
     </div>
 </body>
 <script>
 document.addEventListener("DOMContentLoaded", () => {
-  const video = document.getElementById("ha-video");
-  const btnPlay = document.getElementById("btn-play");
-  const btnMute = document.getElementById("btn-mute");
-  const volumeSlider = document.getElementById("volume-slider");
-  const videoWrap = document.querySelector(".ha-video"); // 作为拖拽手柄
-  const videoBox = document.querySelector(".right-img"); // 实际移动的框
+  initVideoBox({
+    boxSelector: ".video-box.video-1",
+    videoId: "ha-video-1",
+    playId: "btn-play-1",
+    muteId: "btn-mute-1",
+    volumeId: "volume-slider-1",
+  });
 
-  if (!video || !videoBox) return;
+  initVideoBox({
+    boxSelector: ".video-box.video-2",
+    videoId: "ha-video-2",
+    playId: "btn-play-2",
+    muteId: "btn-mute-2",
+    volumeId: "volume-slider-2",
+  });
+});
 
-  // 初始状态
+function getTranslateFromStyle(el) {
+  const style = getComputedStyle(el);
+  const matrix = style.transform;
+  if (!matrix || matrix === "none") return { x: 0, y: 0 };
+  const match =
+    matrix.match(/matrix\(1, 0, 0, 1, ([\-0-9.]+), ([\-0-9.]+)\)/) ||
+    matrix.match(/matrix\(a, b, c, d, ([\-0-9.]+), ([\-0-9.]+)\)/) ||
+    matrix.match(/translate\(([\-0-9.]+)px,\s*([\-0-9.]+)px\)/);
+  if (match) {
+    return { x: parseFloat(match[1]) || 0, y: parseFloat(match[2]) || 0 };
+  }
+  return { x: 0, y: 0 };
+}
+
+function initVideoBox(cfg) {
+  const { boxSelector, videoId, playId, muteId, volumeId } = cfg;
+  const box = document.querySelector(boxSelector);
+  const video = document.getElementById(videoId);
+  const btnPlay = document.getElementById(playId);
+  const btnMute = document.getElementById(muteId);
+  const volumeSlider = document.getElementById(volumeId);
+  if (!box || !video) return;
+
+  const initial = getTranslateFromStyle(box);
+  box.dataset.x = initial.x.toString();
+  box.dataset.y = initial.y.toString();
+  box.style.transform = `translate(${box.dataset.x}px, ${box.dataset.y}px)`;
+
   video.volume = parseFloat(volumeSlider?.value || "0.5");
-  // 从 CSS 读取初始 transform，避免依赖 data 属性
-  const initial = getTranslateFromStyle(videoBox);
-  videoBox.dataset.x = initial.x.toString();
-  videoBox.dataset.y = initial.y.toString();
-  videoBox.style.transform = `translate(${videoBox.dataset.x}px, ${videoBox.dataset.y}px)`;
 
   btnPlay?.addEventListener("click", () => {
     if (video.paused) {
@@ -126,62 +171,46 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // 简易拖拽
-  if (videoWrap) {
-    let dragging = false;
-    let startX = 0, startY = 0;
-    let baseX = 0, baseY = 0;
+  // 拖拽（避免在控件上拖动）
+  let dragging = false;
+  let startX = 0, startY = 0;
+  let baseX = 0, baseY = 0;
 
-    const onPointerDown = (evt) => {
-      dragging = true;
-      videoBox.style.cursor = "grabbing";
-      baseX = parseFloat(videoBox.dataset.x || "0");
-      baseY = parseFloat(videoBox.dataset.y || "0");
-      startX = evt.clientX;
-      startY = evt.clientY;
-      evt.preventDefault();
-      document.addEventListener("pointermove", onPointerMove);
-      document.addEventListener("pointerup", onPointerUp);
-    };
+  const onPointerDown = (evt) => {
+    if (evt.target.closest(".video-controls")) return;
+    dragging = true;
+    box.style.cursor = "grabbing";
+    baseX = parseFloat(box.dataset.x || "0");
+    baseY = parseFloat(box.dataset.y || "0");
+    startX = evt.clientX;
+    startY = evt.clientY;
+    evt.preventDefault();
+    document.addEventListener("pointermove", onPointerMove);
+    document.addEventListener("pointerup", onPointerUp);
+  };
 
-    const onPointerMove = (evt) => {
-      if (!dragging) return;
-      const dx = evt.clientX - startX;
-      const dy = evt.clientY - startY;
-      const newX = baseX + dx;
-      const newY = baseY + dy;
-      videoBox.style.transform = `translate(${newX}px, ${newY}px)`;
-    };
+  const onPointerMove = (evt) => {
+    if (!dragging) return;
+    const dx = evt.clientX - startX;
+    const dy = evt.clientY - startY;
+    const newX = baseX + dx;
+    const newY = baseY + dy;
+    box.style.transform = `translate(${newX}px, ${newY}px)`;
+  };
 
-    const onPointerUp = () => {
-      dragging = false;
-      videoBox.style.cursor = "grab";
-      // 记录当前位置用于下次拖拽
-      const match = videoBox.style.transform.match(/translate\(([-\d.]+)px,\s*([-\d.]+)px\)/);
-      if (match) {
-        videoBox.dataset.x = match[1];
-        videoBox.dataset.y = match[2];
-      }
-      document.removeEventListener("pointermove", onPointerMove);
-      document.removeEventListener("pointerup", onPointerUp);
-    };
+  const onPointerUp = () => {
+    dragging = false;
+    box.style.cursor = "grab";
+    const match = box.style.transform.match(/translate\(([-\d.]+)px,\s*([-\d.]+)px\)/);
+    if (match) {
+      box.dataset.x = match[1];
+      box.dataset.y = match[2];
+    }
+    document.removeEventListener("pointermove", onPointerMove);
+    document.removeEventListener("pointerup", onPointerUp);
+  };
 
-    (videoWrap || videoBox).addEventListener("pointerdown", onPointerDown);
-  }
-});
-
-// 解析元素的 translate，返回 {x,y}
-function getTranslateFromStyle(el) {
-  const style = getComputedStyle(el);
-  const matrix = style.transform;
-  if (!matrix || matrix === "none") return { x: 0, y: 0 };
-  const match = matrix.match(/matrix\(1, 0, 0, 1, ([\-0-9.]+), ([\-0-9.]+)\)/) ||
-                matrix.match(/matrix\(a, b, c, d, ([\-0-9.]+), ([\-0-9.]+)\)/) ||
-                matrix.match(/translate\(([\-0-9.]+)px,\s*([\-0-9.]+)px\)/);
-  if (match) {
-    return { x: parseFloat(match[1]) || 0, y: parseFloat(match[2]) || 0 };
-  }
-  return { x: 0, y: 0 };
+  box.addEventListener("pointerdown", onPointerDown);
 }
 </script>
 </html>
