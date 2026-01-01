@@ -1,0 +1,435 @@
+/*************************************************
+ * RESET + BASE
+ *************************************************/
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Tomorrow", system-ui, sans-serif;
+  background: #ffffff;
+  position: relative !important;
+}
+
+/*************************************************
+ * TOP BANNER
+ *************************************************/
+.top-banner {
+  border: 1px solid #000;
+  margin: 20px 40px;
+  padding: 12px 20px;
+  font-size: 13px;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  background: #fff;
+  position: relative;
+  z-index: 10;
+}
+
+.top-banner a.tomorrow-bold-italic {
+  border-left: 1px solid #000;
+  padding-left: 15px;
+  margin-left: 25px;
+  text-decoration: none;
+  color: #000;
+}
+
+/*************************************************
+ * LEFT PROJECT NAV
+ *************************************************/
+.project-nav {
+  position: absolute;
+  left: 32px;
+  top: 85px;
+  width: 80px;
+  text-align: left;
+  z-index: 2000;
+}
+
+.project-nav p {
+  font-size: 11px;
+  color: #000;
+  margin-bottom: 10px;
+}
+
+.project-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.project-nav li a {
+  display: block;
+  font-size: 12px;
+  color: #999;
+  line-height: 1.6;
+}
+
+.project-nav li a.active,
+.project-nav li a:hover {
+  color: #000;
+  font-weight: bold;
+}
+
+/*************************************************
+ * MAIN LAYOUT
+ *************************************************/
+.a7-wrapper {
+  /* 左边距 140px：避开左侧 project list */
+  margin: 20px 40px 160px 140px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.a7-hero-block {
+  border: 1px solid #000;
+  padding: 24px 28px;
+  background: #fff;
+  display: block;
+  position: relative;
+}
+
+.section-label {
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.a7-hero-block h1 {
+  margin: 0;
+  line-height: 1.1;
+  font-size: clamp(28px, 3vw, 42px);
+}
+
+/*************************************************
+ * GRID (LEFT DESCRIPTION + RIGHT SKETCH)
+ *************************************************/
+.a7-grid {
+ display: grid;
+    width: 100%;
+     padding-right: 15px;
+    grid-template-columns: 25% 1fr;
+    gap: 24px;
+    box-sizing: border-box;
+}
+
+.a7-card {
+  border: 1px solid #000;
+  background: #fff;
+  padding: 20px 22px;
+  min-height: 320px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.a7-card h2 {
+  margin: 0;
+  font-size: 20px;
+  letter-spacing: 0.5px;
+}
+
+.sketch-card {
+  grid-column: auto;
+  min-height: 300px;
+}
+
+/*************************************************
+ * SCROLL BOX (Project Description)
+ *************************************************/
+.scroll-box {
+  max-height: 480px;     /* 你要更高改这里 */
+  overflow-y: auto;
+  padding-right: 12px;
+  margin-right: 4px;
+
+  line-height: 1.6;
+  white-space: normal;   /* ✅ 不保留 HTML 换行 */
+}
+
+.scroll-box p {
+  margin: 0 0 12px 0;
+}
+
+.scroll-title {
+  font-size: 12px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+}
+
+.scroll-box::-webkit-scrollbar {
+  width: 10px;
+}
+
+.scroll-box::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+}
+
+/*************************************************
+ * SKETCH CONTAINER FRAME
+ *************************************************/
+.sketch-container-frame {
+  width: 100%;
+  min-height: 520px;
+
+  border: 1px dashed #000;
+  background: #fafafa;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 8px;
+
+  box-sizing: border-box;
+}
+
+/* Sketch isolation (避免 canvas / overlay 干扰别的元素) */
+#sketch-container {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: auto;
+}
+
+#sketch-container canvas {
+  position: relative;
+  z-index: 0;
+}
+
+/*************************************************
+ * HEADER CLICK SAFE (你的导航点击修复保留)
+ *************************************************/
+header.hero {
+  position: relative;
+  z-index: 9999999;
+  pointer-events: auto !important;
+}
+
+/* 移除伪元素的点击拦截 */
+header.hero::before,
+header.hero::after {
+  pointer-events: none !important;
+}
+
+/* h1 视觉保留，但不吃点击 */
+header.hero h1 {
+  position: relative;
+  z-index: 1;
+  pointer-events: none;
+}
+
+header.hero nav {
+  position: relative !important;
+  z-index: 999999999 !important;
+  pointer-events: auto !important;
+}
+
+header.hero nav a {
+  position: relative !important;
+  z-index: 9999999999 !important;
+  pointer-events: auto !important;
+  cursor: pointer !important;
+  display: inline-block !important;
+}
+
+/* 强制所有 header 内元素可点击 */
+header.hero *:not(h1) {
+  pointer-events: auto !important;
+}
+
+/* main 正常层级 */
+main.grid {
+  position: relative;
+  z-index: 0;
+}
+
+/*************************************************
+ * CANVAS
+ *************************************************/
+canvas {
+  display: block;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  cursor: none;
+}
+
+/*************************************************
+ * TYPOGRAPHY (你保留的字体类)
+ *************************************************/
+.kirang-haerang-regular {
+  font-family: "Kirang Haerang", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/*************************************************
+ * SECTION TITLES (给 p5 overlay 用的)
+ * 注意：不要给 scroll-box 的标题用这个 class
+ *************************************************/
+.section-title {
+  position: absolute;
+  z-index: 9999;
+  color: #c06930;
+  font-weight: bold;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+}
+
+/*************************************************
+ * CONTROL BUTTONS (p5 UI)
+ *************************************************/
+.control-btn {
+  position: absolute;
+  z-index: 9999;
+
+  font-family: "Kirang Haerang", system-ui;
+  background: #f4a259;
+  color: #3f2a1f;
+
+  border: none;
+  border-radius: 8px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  box-shadow: 0 4px 15px rgba(244, 162, 89, 0.35);
+  box-sizing: border-box;
+}
+
+.control-btn:hover {
+  transform: translateY(-2px);
+  background: #f28c3c;
+  box-shadow: 0 6px 20px rgba(242, 140, 60, 0.45);
+}
+
+.control-btn.accent {
+  background: #f1be5a;
+  color: #4a300d;
+  box-shadow: 0 4px 15px rgba(241, 190, 90, 0.4);
+}
+
+.control-btn.secondary,
+.control-btn.quick-btn {
+  background: transparent;
+  color: #f28c3c;
+  border: 2px dashed #f28c3c;
+  box-shadow: none;
+}
+
+.control-btn.save {
+  background: transparent;
+  color: #45b7af;
+  font-size: 14px;
+  border: 2px dashed #45b7af;
+  box-shadow: none;
+}
+
+/*************************************************
+ * FILE INPUT (p5 UI)
+ *************************************************/
+.control-input {
+  position: absolute;
+  z-index: 9999;
+
+  font-size: 13px;
+  padding: 8px;
+
+  border-radius: 6px;
+  border: 2px solid #f4a259;
+
+  background: white;
+  box-sizing: border-box;
+}
+
+/*************************************************
+ * SLIDERS (p5 UI)
+ *************************************************/
+.control-slider {
+  position: absolute;
+  z-index: 9999;
+
+  width: 160px;
+  height: 6px;
+
+  border-radius: 5px;
+  outline: none;
+
+  -webkit-appearance: none;
+  appearance: none;
+
+  background: #f6c499;
+}
+
+.control-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+
+  width: 18px;
+  height: 18px;
+
+  border-radius: 50%;
+  background: white;
+
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.control-slider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+
+  border-radius: 50%;
+  background: white;
+
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/*************************************************
+ * SLIDER LABELS (p5 UI)
+ *************************************************/
+.slider-label {
+  position: absolute;
+  z-index: 9999;
+
+  color: #555;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/*************************************************
+ * RESPONSIVE
+ *************************************************/
+@media (max-width: 1000px) {
+  .a7-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .a7-wrapper {
+    margin: 120px 20px 140px 20px;
+  }
+
+  .a7-hero-block {
+    padding: 18px 20px;
+  }
+}

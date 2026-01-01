@@ -1,0 +1,204 @@
+/* 基础重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Georgia", "Songti SC", "SimSun", serif;
+    display: flex;
+    background-color: #fff;
+    color: #333;
+    overflow-x: hidden;
+}
+
+/* 左侧固定栏 */
+.sidebar {
+    width: 30%;
+    height: 100vh;
+    border-right: 1.5px solid #000;
+    padding: 60px 40px;
+    position: sticky;
+    top: 0;
+}
+
+.vertical-title {
+    writing-mode: vertical-rl;
+    font-size: 28px;
+    position: absolute;
+    left: 20px;
+    top: 60px;
+    letter-spacing: 0.5em;
+}
+
+.name-box {
+    text-align: right;
+    margin-bottom: 40px;
+}
+
+.name-box h1 { font-size: 40px; font-weight: 300; }
+.name-box h2 { font-size: 28px; font-weight: 300; }
+
+.circle-link {
+    width: 140px;
+    height: 140px;
+    border: 1px solid #000;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    text-decoration: none;
+    color: #000;
+    transition: all 0.3s;
+}
+
+.circle-link:hover { background: #f0f0f0; }
+
+.intro-container {
+    width: 300px;
+    height: 300px;
+    border: 1px solid #000;
+    border-radius: 50%;
+    padding: 50px;
+    display: flex;
+    align-items: center;
+    text-align: justify;
+    font-size: 14px;
+    line-height: 1.8;
+    margin-top: 30px;
+}
+
+.contact-circle {
+    width: 100px;
+    height: 100px;
+    border: 1px solid #000;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 50px;
+    right: -50px;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 5;
+}
+
+/* 右侧滚动区 */
+.main-content {
+    width: 70%;
+    padding: 60px;
+    position: relative;
+}
+
+.title-project { font-size: 48px; margin-bottom: 10px; }
+.title-interaction { font-size: 32px; margin-left: 80px; margin-bottom: 60px; }
+
+.project-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    padding-left: 50px;
+}
+
+.item {
+    width: 160px;
+    text-align: center;
+}
+
+.box {
+    width: 160px;
+    height: 160px;
+    border: 1px solid #000;
+    margin-bottom: 10px;
+    background: #fff;
+    transition: transform 0.3s;
+}
+
+.box:hover { transform: scale(1.05); }
+
+/* 错位偏移样式 */
+.offset-md { margin-top: 80px; }
+.offset-sm { margin-top: -40px; }
+.offset-lg { margin-top: 120px; }
+
+.fish-icon {
+    position: absolute;
+    bottom: 50px;
+    left: 100px;
+}
+
+.visual-tag {
+    position: absolute;
+    bottom: 50px;
+    right: 50px;
+    font-size: 32px;
+}
+/* 详情页专用样式 */
+.project-page {
+    flex-direction: column; /* 详情页是纵向排列 */
+    height: 100vh;
+    padding: 20px;
+}
+
+/* 顶部 Banner */
+.top-banner {
+    border: 1px solid #000;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+}
+.banner-content {
+    font-size: 18px;
+    word-spacing: 10px;
+}
+
+/* 三栏布局容器 */
+.detail-container {
+    display: flex;
+    flex: 1; /* 占据剩余高度 */
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.left-column-narrow {
+    width: 8%;
+    border: 1px solid #000;
+}
+
+.middle-column-wide {
+    flex: 1;
+    border: 1px solid #000;
+    background: #fdfdfd;
+}
+
+.right-column-list {
+    width: 10%;
+    text-align: right;
+    font-size: 12px;
+}
+.right-column-list ol {
+    list-style: none;
+    margin-top: 10px;
+}
+
+/* 底部导航 */
+.bottom-nav {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 10px;
+}
+.nav-links a {
+    margin-left: 30px;
+    text-decoration: none;
+    color: #000;
+    font-size: 14px;
+}
+.nav-links a:hover { text-decoration: underline; }
+
+/* 响应式微调 */
+.content-placeholder {
+    width: 100%;
+    height: 100%;
+}

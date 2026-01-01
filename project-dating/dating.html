@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Dating Game - Yingyu Chen</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Tomorrow:ital,wght@0,100;0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barrio&family=Kirang+Haerang&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/home.css" />
+    <link rel="stylesheet" href="/css/dating.css" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body class="tomorrow-regular">
+    <header class="top-banner tomorrow-light">
+      A playful p5.js mini-journey about dating as performance, timing, and luck
+      — ending in a wedding photo booth you can actually save. Swipe, hold
+      hands, kiss at the right moment, then build your own over-the-top wedding
+      photo as a souvenir.
+      <a href="README.md" class="tomorrow-bold-italic">README</a>
+    </header>
+
+    <nav class="project-nav">
+      <p class="tomorrow-medium">project list</p>
+      <ul class="tomorrow-thin">
+        <li><a href="../project1.html">1</a></li>
+        <li><a href="dating.html" class="active tomorrow-bold">2</a></li>
+        <li><a href="../project3.html">3</a></li>
+        <li><a href="../project4.html">4</a></li>
+        <li><a href="../project5.html">5</a></li>
+        <li><a href="../project6.html">6</a></li>
+        <li><a href="../project7.html">7</a></li>
+        <li><a href="../project8.html">8</a></li>
+        <li><a href="../project9.html">9</a></li>
+        <li><a href="../project10.html">10</a></li>
+        <li><a href="../project11.html">11</a></li>
+        <li><a href="../project12.html">12</a></li>
+        <li><a href="../project13.html">13</a></li>
+        <li><a href="../project14.html">14</a></li>
+      </ul>
+    </nav>
+
+ <main class="a7-wrapper">
+  <header class="hero a7-hero-block">
+    <div class="hero-text">
+      <p class="tomorrow-medium section-label">Dating Game</p>
+      <h1 class="tomorrow-black-italic">Let's get married</h1>
+    </div>
+  </header>
+
+  <section class="a7-grid">
+    <!-- LEFT: description -->
+    <article class="a7-card">
+      <h2>How to Play</h2>
+
+      <div class="scroll-box">
+        <!-- <p class="scroll-title"></p> -->
+        <p>
+          Follow what the scene tells you to do. Press 1 anytime to quickly jump
+          to the next scene (debug / fast travel).
+        </p>
+
+        <p class="scroll-title">Scenes (Player Guide)</p>
+        <p>
+          Scene 0 — Enter the world: be the one that people are looking for.
+          <br />
+          Scene 1 — Shall we talk: use “dating app logic" to determine the
+          outcome of the message you send.
+          <br />
+          Scene 2 — Push and pulls: play with the rhythm of interaction — where
+          are the boundaries?
+          <br />
+          Scene 3 — Timing test: everything is about timing. If you are a good
+          kisser, you get the Sunday date and plan for our wedding photo. If you
+          fail, you’re dumped and pushed back into the loop.
+          <br />
+          Scene 4 — Wedding Photo Booth: upload an image or use your webcam,
+          then place yourself into a dramatic wedding template. Save the final
+          canvas as your “relationship proof.”
+        </p>
+      </div>
+    </article>
+
+    <!-- RIGHT: sketch -->
+    <article class="a7-card sketch-card">
+      <div id="sketch-container" class="sketch-container-frame"></div>
+    </article>
+  </section>
+</main>
+
+
+    <footer class="footer-nav tomorrow-light">
+      <a href="../contact.html">contact</a>
+      <a href="../index.html">home</a>
+      <a href="README.md">README</a>
+    </footer>
+
+    <!-- p5 + addons -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/addons/p5.sound.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clmtrackr/1.1.2/clmtrackr.min.js"></script>
+
+    <!-- scenes -->
+    <script src="./scene0.js"></script>
+    <script src="./scene1.js"></script>
+    <script src="./scene2.js"></script>
+    <script src="./scene3.js"></script>
+    <script src="./scene4.js"></script>
+    <script src="./7.js"></script>
+
+    <!-- ✅ 终极导航修复脚本 -->
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        console.log("🔧 Navigation fix loading...");
+
+        setTimeout(() => {
+          const links = document.querySelectorAll("header.hero nav a");
+          console.log("📍 Found links:", links.length);
+
+          links.forEach((link, index) => {
+            // 强制样式
+            link.style.cssText = `
+              position: relative !important;
+              z-index: 9999999999 !important;
+              pointer-events: auto !important;
+              cursor: pointer !important;
+              display: inline-block !important;
+            `;
+
+            // 使用 mousedown 事件（比 click 更早触发，更难被拦截）
+            link.addEventListener(
+              "mousedown",
+              (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                e.stopImmediatePropagation();
+
+                const href = link.getAttribute("href");
+                console.log("🚀 Navigating to:", href);
+                window.location.href = href;
+              },
+              true
+            );
+
+            // 备用：click 事件
+            link.addEventListener(
+              "click",
+              (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                e.stopImmediatePropagation();
+
+                const href = link.getAttribute("href");
+                console.log("🚀 Click backup triggered:", href);
+                window.location.href = href;
+              },
+              true
+            );
+
+            console.log(`✅ Link ${index} fixed:`, link.textContent.trim());
+          });
+
+          // 全局备用拦截器
+          document.addEventListener(
+            "click",
+            (e) => {
+              const target = e.target.closest("header.hero nav a");
+              if (target) {
+                e.preventDefault();
+                e.stopPropagation();
+                e.stopImmediatePropagation();
+
+                const href = target.getAttribute("href");
+                console.log("🎯 Global interceptor triggered:", href);
+                window.location.href = href;
+              }
+            },
+            true
+          );
+
+          console.log("✅ Navigation fix complete!");
+        }, 100);
+      });
+    </script>
+  </body>
+</html>

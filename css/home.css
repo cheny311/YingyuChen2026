@@ -1,0 +1,243 @@
+/* ============================================================
+   1. 全局基础设置 (Tomorrow 字体 & 页面重置)
+   ============================================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Tomorrow', sans-serif;
+}
+
+body { 
+    color: #000; 
+    background: #fff; 
+    overflow-x: hidden; /* 防止横向滚动条 */
+}
+
+/* 核心：通用圆圈形状 */
+.circle {
+    border: 1px solid #000;
+    border-radius: 50%; /* 变成圆形的魔法 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    text-decoration: none;
+    color: #000;
+    background-color: #fff;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* 全局底部导航 */
+.footer-nav {
+    position: fixed;
+    bottom: 20px;
+    right: 40px;
+    display: flex;
+    gap: 30px;
+    font-size: 14px;
+    z-index: 1000;
+}
+.footer-nav a { 
+    text-decoration: none; 
+    color: #000; 
+    font-weight: 300;
+}
+
+/* ============================================================
+   2. 交互动画 (Hover Effects)
+   ============================================================ */
+.project-item, .circle {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* 鼠标悬停：放大 + 轻微旋转 */
+.project-item:hover {
+    transform: scale(1.1) rotate(2deg);
+    z-index: 99;
+}
+
+.circle:hover {
+    transform: scale(1.05);
+    background-color: #f9f9f9;
+}
+
+/* 方块背景变色 */
+.project-item:hover .box {
+    background-color: #f5f5f5;
+    border-width: 1.5px;
+}
+
+/* ============================================================
+   3. 首页布局 - 左侧固定栏 (Sidebar)
+   ============================================================ */
+.home-container {
+    display: flex;
+}
+
+.sidebar {
+    width: 30%;
+    height: 100vh;
+    border-right: 1px solid #000;
+    position: fixed;
+    left: 0;
+    top: 0;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    background-color: #fff;
+    z-index: 10;
+}
+
+/* 歪七扭八的垂直标题 */
+.vertical-title {
+    writing-mode: vertical-rl;
+    position: absolute;
+    left: 30px;
+    top: 50px;
+}
+.vertical-title span {
+    display: inline-block;
+    font-size: 22px;
+    margin-bottom: 5px;
+}
+
+/* 名字区域：向中线靠拢 */
+.name-box {
+    text-align: right;
+    margin-top: 80px;
+    margin-right: 80px;
+}
+.name-box h1 { 
+    font-size: 42px; 
+    font-weight: 500;
+    line-height: 0.9;
+    margin-bottom: 10px;
+}
+.name-box h2 { 
+    font-size: 28px; 
+    font-weight: 400;
+    padding-right: 20px;
+}
+
+/* 圆形元素具体大小 */
+.about-circle {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 40px;
+    font-size: 13px;
+}
+
+.bio-circle {
+    width: 280px;
+    height: 280px;
+    padding: 40px;
+    font-size: 13px;
+    line-height: 1.8;
+    font-weight: 300;
+    text-align: justify;
+}
+
+.contact-circle {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    bottom: 50px;
+    right: -50px; /* 跨线效果 */
+    font-size: 12px;
+    z-index: 15;
+}
+
+/* ============================================================
+   4. 首页布局 - 右侧内容区 (Main Content)
+   ============================================================ */
+.main-content {
+    margin-left: 30%; /* 避开左侧固定栏 */
+    flex: 1;
+    padding: 60px 40px 100px 80px;
+    position: relative;
+}
+
+/* 标题：Project Interaction */
+.section-header {
+    margin-left: -10px; /* 向左偏移 10px */
+    margin-top: 40px;
+    margin-bottom: 60px;
+}
+
+.section-header h1 {
+    font-size: 64px;
+    font-weight: 200;
+    letter-spacing: 2px;
+}
+
+.section-header h2 {
+    font-size: 32px;
+    font-weight: 100;
+    margin-left: 60px;
+}
+
+/* 项目网格 */
+.project-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px 60px;
+    align-items: flex-start;
+}
+
+.project-item {
+    width: 160px;
+    text-decoration: none;
+    color: #000;
+    text-align: center;
+}
+
+.project-item .box {
+    width: 160px;
+    height: 160px;
+    border: 1px solid #000;
+    margin-bottom: 10px;
+    background: #fff;
+}
+
+.project-item p {
+    font-size: 14px;
+    font-weight: 300;
+}
+
+/* ============================================================
+   5. 错位控制 (还原手稿的高低起伏)
+   ============================================================ */
+.p-thesis { margin-top: 20px; }
+.p-dating { margin-top: 60px; }
+.p-diary  { margin-top: 130px; }
+.p-hahaha { margin-top: 180px; }
+.p-wetalk { margin-top: 80px; }
+.p-filter { margin-top: 30px; }
+.p-tear   { margin-top: 220px; }
+.p-unspoken { margin-top: 110px; }
+.p-yiwenli { margin-top: 240px; }
+.p-omnivore { margin-top: -10px; }
+.p-animation { margin-top: 140px; }
+.p-poster { margin-top: 260px; }
+
+/* ============================================================
+   6. 装饰物
+   ============================================================ */
+.deco-fish {
+    position: absolute;
+    bottom: 60px;
+    left: 60px;
+    width: 180px;
+    pointer-events: none; /* 防止鱼遮挡点击 */
+}
+
+.visual-tag {
+    position: absolute;
+    bottom: 40px;
+    right: 40px;
+    font-size: 36px;
+    font-weight: 100;
+}
