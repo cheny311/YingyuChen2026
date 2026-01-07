@@ -2,104 +2,183 @@
 <html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dating Game - Yingyu Chen</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Tomorrow:ital,wght@0,100;0,400;0,700;1,400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Tomorrow:wght@300;400;500;600&family=Noto+Sans+SC:wght@300;400;500;600&display=swap"
       rel="stylesheet"
     />
+    <!-- p5 scenes need Kirang Haerang for text/UI -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Barrio&family=Kirang+Haerang&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Kirang+Haerang&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/css/home.css" />
+    <link rel="stylesheet" href="../project-tabletalk/tabletalk.css" />
     <link rel="stylesheet" href="/css/dating.css" />
-    <link rel="stylesheet" href="./style.css" />
   </head>
-  <body class="tomorrow-regular">
-    <header class="top-banner tomorrow-light">
-      A playful p5.js mini-journey about dating as performance, timing, and luck
-      — ending in a wedding photo booth you can actually save. Swipe, hold
-      hands, kiss at the right moment, then build your own over-the-top wedding
-      photo as a souvenir.
-      <a href="read.html" class="tomorrow-bold-italic">README</a>
+  <body>
+    <header class="topbar">
+      <a class="home-link" href="../index.html">HOME</a>
+      <span class="sep">/</span>
+      <span class="current">DATING GAME</span>
+      <a class="next-link" href="../contact.html">CONTACT</a>
     </header>
 
-    <nav class="project-nav">
-      <p class="tomorrow-medium">project list</p>
-      <ul class="tomorrow-thin">
-        <li><a href="../project1.html">1</a></li>
-        <li><a href="dating.html" class="active tomorrow-bold">2</a></li>
-        <li><a href="../project3.html">3</a></li>
-        <li><a href="../project4.html">4</a></li>
-        <li><a href="../project5.html">5</a></li>
-        <li><a href="../project6.html">6</a></li>
-        <li><a href="../project7.html">7</a></li>
-        <li><a href="../project8.html">8</a></li>
-        <li><a href="../project9.html">9</a></li>
-        <li><a href="../project10.html">10</a></li>
-        <li><a href="../project11.html">11</a></li>
-        <li><a href="../project12.html">12</a></li>
-        <li><a href="../project13.html">13</a></li>
-        <li><a href="../project14.html">14</a></li>
-      </ul>
-    </nav>
+    <main class="page">
+      <!-- LEFT: sticky meta -->
+      <aside class="left">
+        <div class="meta">
+          <h1 class="title">Dating Game</h1>
+          <div class="subline">Interactive Installation / p5.js</div>
+          <div class="subline">2025</div>
 
- <main class="a7-wrapper">
-  <header class="hero a7-hero-block">
-    <div class="hero-text">
-      <p class="tomorrow-medium section-label">Dating Game</p>
-      <h1 class="tomorrow-black-italic">Let's get married</h1>
-    </div>
-  </header>
+          <div class="chips">
+            <span class="chip">Game</span>
+            <span class="chip">p5.js</span>
+            <span class="chip">Web</span>
+          </div>
 
-  <section class="a7-grid">
-    <!-- LEFT: description -->
-    <article class="a7-card">
-      <h2>How to Play</h2>
+          <div class="divider"></div>
 
-      <div class="scroll-box">
-        <!-- <p class="scroll-title"></p> -->
-        <p>
-          Follow what the scene tells you to do. Press 1 anytime to quickly jump
-          to the next scene (debug / fast travel).
-        </p>
+          <div class="facts">
+            <div class="fact">
+              <div class="k">Role</div>
+              <div class="v">Design, Code, Illustration</div>
+            </div>
+            <div class="fact">
+              <div class="k">Tools</div>
+              <div class="v">p5.js, clmtrackr, HTML/CSS/JS</div>
+            </div>
+            <div class="fact">
+              <div class="k">Output</div>
+              <div class="v">Playable web journey + photo booth</div>
+            </div>
+          </div>
 
-        <p class="scroll-title">Scenes (Player Guide)</p>
-        <p>
-          Scene 0 — Enter the world: be the one that people are looking for.
-          <br />
-          Scene 1 — Shall we talk: use “dating app logic" to determine the
-          outcome of the message you send.
-          <br />
-          Scene 2 — Push and pulls: play with the rhythm of interaction — where
-          are the boundaries?
-          <br />
-          Scene 3 — Timing test: everything is about timing. If you are a good
-          kisser, you get the Sunday date and plan for our wedding photo. If you
-          fail, you’re dumped and pushed back into the loop.
-          <br />
-          Scene 4 — Wedding Photo Booth: upload an image or use your webcam,
-          then place yourself into a dramatic wedding template. Save the final
-          canvas as your “relationship proof.”
-        </p>
-      </div>
-    </article>
+          <div class="divider"></div>
 
-    <!-- RIGHT: sketch -->
-    <article class="a7-card sketch-card">
-      <div id="sketch-container" class="sketch-container-frame"></div>
-    </article>
-  </section>
-</main>
+          <nav class="toc">
+            <a href="#section0">0 — Overview</a>
+            <a href="#section1">1 — How to play</a>
+            <a href="#section2">2 — Scenes</a>
+            <a href="#section3">3 — Interactive demo</a>
+          </nav>
 
+          <div class="divider"></div>
 
-    <footer class="footer-nav tomorrow-light">
-      <a href="../contact.html">contact</a>
-      <a href="../index.html">home</a>
-      <a href="read.html">README</a>
-    </footer>
+          <div class="links">
+            <a href="read.html">README</a>
+            <a href="../contact.html">Contact</a>
+          </div>
+        </div>
+      </aside>
+
+      <!-- RIGHT: content -->
+      <section class="right">
+        <!-- SECTION 0 -->
+        <section id="section0" class="block">
+          <h2 class="h2">0 — Overview</h2>
+
+          <div class="hero-inline">
+            <figure class="media hero-video">
+              <img src="images/p1.jpg" alt="Dating game hero" />
+              <figcaption>Game world snapshot</figcaption>
+            </figure>
+
+            <figure class="text-card">
+              <p>Dating Game is a playful p5.js journey about timing, performance, and luck—ending with an over-the-top wedding photo booth you can actually save.</p>
+              <p>You swipe, hold hands, kiss at the right moment, then assemble your own dramatic wedding photo as a souvenir.</p>
+              <p>Press 1 anytime to jump to the next scene if you want to speed-run the story.</p>
+            </figure>
+          </div>
+        </section>
+
+        <!-- SECTION 1 -->
+        <section id="section1" class="block">
+          <h2 class="h2">1 — How to play</h2>
+          <div class="bilingual single-col">
+            <div class="col">
+              <p>Follow the on-screen prompts. Each scene tests a different “dating mechanic.”</p>
+              <p><b>Scene 0 — Enter the world:</b> Be the one people are looking for.</p>
+              <p><b>Scene 1 — Shall we talk:</b> Use dating app logic to decide how your message lands.</p>
+              <p><b>Scene 2 — Push and pulls:</b> Play with the rhythm of interaction and boundaries.</p>
+              <p><b>Scene 3 — Timing test:</b> Kiss with perfect timing to earn the Sunday date, or get dumped back into the loop.</p>
+              <p><b>Scene 4 — Wedding Photo Booth:</b> Upload a photo or use your webcam, place yourself into a dramatic template, and save the final canvas.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 2 -->
+        <section id="section2" class="block">
+          <h2 class="h2">2 — Scenes</h2>
+          <div class="media-grid">
+            <figure class="media">
+              <img src="untitled folder/our_wedding_photo (12).png" alt="Scene preview 1" />
+              <figcaption>Push and pull interactions</figcaption>
+            </figure>
+            <figure class="media">
+              <img src="untitled folder/our_wedding_photo (11).png" alt="Scene preview 3" />
+              <figcaption>Wedding photo booth</figcaption>
+            </figure>
+            <figure class="media">
+              <video controls playsinline muted autoplay loop preload="auto" poster="https://via.placeholder.com/900x600/e8e8e8/666?text=Scene+0+horizontal">
+                <source src="untitled folder/3.mp4" type="video/mp4" />
+              </video>
+              <figcaption>Scene 0 — world entry (placeholder)</figcaption>
+            </figure>
+            <figure class="media">
+              <video controls playsinline muted autoplay loop preload="auto" poster="https://via.placeholder.com/900x600/e8e8e8/666?text=Scene+2+horizontal">
+                <source src="untitled folder/5.mp4" type="video/mp4" />
+              </video>
+              <figcaption>Scene 2 — push & pull (placeholder)</figcaption>
+            </figure>
+            <figure class="media">
+              <video controls playsinline muted autoplay loop preload="auto" poster="https://via.placeholder.com/900x600/e8e8e8/666?text=Scene+4+horizontal">
+                <source src="untitled folder/4.mp4" type="video/mp4" />
+              </video>
+              <figcaption>Scene 4 — wedding booth (placeholder)</figcaption>
+            </figure>
+
+             <figure class="media">
+              <video controls playsinline muted autoplay loop preload="auto" poster="https://via.placeholder.com/900x600/e8e8e8/666?text=Scene+4+horizontal">
+                <source src="untitled folder/6.mp4" type="video/mp4" />
+              </video>
+              <figcaption>Scene 4 — wedding booth (placeholder)</figcaption>
+            </figure>
+
+             <figure class="media">
+              <video controls playsinline muted autoplay loop preload="auto" poster="https://via.placeholder.com/900x600/e8e8e8/666?text=Scene+4+horizontal">
+                <source src="untitled folder/8.mp4" type="video/mp4" />
+              </video>
+              <figcaption>Scene 4 — wedding booth (placeholder)</figcaption>
+            </figure>
+             <figure class="media">
+              <video controls playsinline muted autoplay loop preload="auto" poster="https://via.placeholder.com/900x600/e8e8e8/666?text=Scene+4+horizontal">
+                <source src="untitled folder/9.mp4" type="video/mp4" />
+              </video>
+              <figcaption>Scene 4 — wedding booth (placeholder)</figcaption>
+            </figure>
+             <figure class="media">
+              <video controls playsinline muted autoplay loop preload="auto" poster="https://via.placeholder.com/900x600/e8e8e8/666?text=Scene+4+horizontal">
+                <source src="untitled folder/10.mp4" type="video/mp4" />
+              </video>
+              <figcaption>Scene 4 — wedding booth (placeholder)</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <!-- SECTION 3 -->
+        <section id="section3" class="block">
+          <h2 class="h2">3 — Interactive demo</h2>
+          <figure class="media sketch-media">
+            <div id="sketch-container" class="sketch-frame"></div>
+            <figcaption>Live p5.js sketch (use keys 0–4 to jump scenes)</figcaption>
+          </figure>
+        </section>
+      </section>
+    </main>
 
     <!-- p5 + addons -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
@@ -114,79 +193,5 @@
     <script src="./scene4.js"></script>
     <script src="./7.js"></script>
 
-    <!-- ✅ 终极导航修复脚本 -->
-    <script>
-      window.addEventListener("DOMContentLoaded", () => {
-        console.log("🔧 Navigation fix loading...");
-
-        setTimeout(() => {
-          const links = document.querySelectorAll("header.hero nav a");
-          console.log("📍 Found links:", links.length);
-
-          links.forEach((link, index) => {
-            // 强制样式
-            link.style.cssText = `
-              position: relative !important;
-              z-index: 9999999999 !important;
-              pointer-events: auto !important;
-              cursor: pointer !important;
-              display: inline-block !important;
-            `;
-
-            // 使用 mousedown 事件（比 click 更早触发，更难被拦截）
-            link.addEventListener(
-              "mousedown",
-              (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                e.stopImmediatePropagation();
-
-                const href = link.getAttribute("href");
-                console.log("🚀 Navigating to:", href);
-                window.location.href = href;
-              },
-              true
-            );
-
-            // 备用：click 事件
-            link.addEventListener(
-              "click",
-              (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                e.stopImmediatePropagation();
-
-                const href = link.getAttribute("href");
-                console.log("🚀 Click backup triggered:", href);
-                window.location.href = href;
-              },
-              true
-            );
-
-            console.log(`✅ Link ${index} fixed:`, link.textContent.trim());
-          });
-
-          // 全局备用拦截器
-          document.addEventListener(
-            "click",
-            (e) => {
-              const target = e.target.closest("header.hero nav a");
-              if (target) {
-                e.preventDefault();
-                e.stopPropagation();
-                e.stopImmediatePropagation();
-
-                const href = target.getAttribute("href");
-                console.log("🎯 Global interceptor triggered:", href);
-                window.location.href = href;
-              }
-            },
-            true
-          );
-
-          console.log("✅ Navigation fix complete!");
-        }, 100);
-      });
-    </script>
   </body>
 </html>
