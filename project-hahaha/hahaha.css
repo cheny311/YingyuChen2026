@@ -4,6 +4,16 @@ body {
   background: #f8f8f8;
 }
 
+.bg-svg {
+  position: fixed;
+  inset: 0;
+  background: url("ha.svg") 5% 20% / 25% auto no-repeat;
+  opacity: 1;
+  pointer-events: none;
+  z-index:30;
+  will-change: transform;
+}
+
 .sketch-frame {
   width: 100%;
   min-height: 520px;
@@ -35,12 +45,11 @@ body {
   object-fit: contain;
 }
 
-.sidebar-svg {
-  margin-top: 24px;
-}
-
-.sidebar-svg img {
-  display: block;
-  width: 100%;
-  max-width: 260px;
+/* Use the SVG as a subtle background for the meta card */
+.left .meta {
+  background-image: url("ha.svg");
+  background-repeat: no-repeat;
+  background-size: 40% auto; /* 放大约 2 倍 */
+  background-position: center 420px;
+ 
 }

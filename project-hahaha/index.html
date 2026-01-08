@@ -15,6 +15,8 @@
   </head>
 
   <body>
+    <div class="bg-svg" aria-hidden="true"></div>
+
     <header class="topbar">
       <a class="home-link" href="../index.html">HOME</a>
       <span class="sep">/</span>
@@ -63,9 +65,6 @@
             <a href="#section4">4 — Credits</a>
           </nav>
 
-          <div class="sidebar-svg">
-            <img src="ha.svg" alt="SVG face graphic" />
-          </div>
         </div>
       </aside>
 
@@ -82,9 +81,12 @@
               <figcaption>Looping face & laughter study</figcaption>
             </figure>
             <figure class="text-card">
-              <p>Hahaha is an interactive piece about forced laughter and automated responses. Voices stretch, loop, and tremble as you hover and drag the videos around the screen.</p>
-              <p>The work combines drifting video frames, a soft face, and reactive audio. Every move nudges the soundscape; every pause leaves an echo.</p>
-              <p>Use the controls to pause/mute each clip. Click inside the canvas to enable audio for the p5 interaction.</p>
+              <p>Laughter didn’t arise from an authentic, spontaneous emotional reaction, but was produced technically. While the story was told face-to-face, the response was displaced onto the screen, creating a misalignment in communication. Laughter no longer addressed the other person’s story, but became an endlessly reproducible output.
+
+This experience made me realize that many moments that appear communicative are not oriented toward understanding, but toward sustaining interaction itself. Especially for those positioned lower within power structures, laughter is often used to fill silence, ease tension, and gradually becomes a form of physical labor.
+
+I began to wonder: when laughter is completely separated from emotional intention, what does it signify?
+</p>
             </figure>
           </div>
         </section>
@@ -94,9 +96,12 @@
           <h2 class="h2">1 — Concept</h2>
           <div class="bilingual single-col">
             <div class="col">
-              <p><b>Laughter as pressure.</b> The piece treats laughter like a trigger: automated, looping, sometimes out of sync with the body.</p>
-              <p><b>Drift and control.</b> Videos are draggable; sounds shift as you move. You steer an unstable chorus.</p>
-              <p><b>Soft sculpture.</b> The oversized face is both playful and uncanny—a cushion that watches and reacts.</p>
+              <p><b>Perhaps it functions like a pause: a brief moment to catch one’s breath.
+
+In later iterations, this misaligned form of communication was further systematized. HaHaHa evolved into an interactive object that produces prerecorded laughter through bodily interaction. Participants can generate laughter without emotional investment, as if happiness itself can be captured, automated, and projected.
+
+By separating laughter from emotion, the work presents laughter as a mechanical response. Through the deconstruction of the Chinese character “哈,” the project articulates my understanding of social discipline as something embedded in everyday gestures.
+.</b></p>
             </div>
           </div>
         </section>
@@ -165,5 +170,31 @@
     <script src="https://cdn.jsdelivr.net/npm/p5@1.11.10/lib/p5.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/p5@1.11.10/lib/addons/p5.sound.min.js"></script>
     <script src="sketch.js"></script>
+    <script>
+      (function() {
+        const bg = document.querySelector('.bg-svg');
+        if (!bg) return;
+        const strength = 0.35; // 更敏感的跟随
+        let targetX = 0, targetY = 0;
+        let currentX = 0, currentY = 0;
+
+        function onMove(e) {
+          const centerX = window.innerWidth / 2;
+          const centerY = window.innerHeight / 2;
+          targetX = (e.clientX - centerX) * strength;
+          targetY = (e.clientY - centerY) * strength;
+        }
+
+        function tick() {
+          currentX += (targetX - currentX) * 0.18;
+          currentY += (targetY - currentY) * 0.18;
+          bg.style.transform = `translate(${currentX}px, ${currentY}px)`;
+          requestAnimationFrame(tick);
+        }
+
+        window.addEventListener('pointermove', onMove);
+        tick();
+      })();
+    </script>
   </body>
 </html>
