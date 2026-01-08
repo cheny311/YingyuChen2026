@@ -29,8 +29,45 @@ body {
   display: block;
 }
 
+.scroll-notes {
+  max-height: 255px;
+  overflow-y: auto;
+  max-width: 360px;
+  width: 100%;
+}
+
+.scroll-notes::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scroll-notes::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 6px;
+}
+
+.scroll-hero {
+  max-height: 405px;
+  overflow-y: auto;
+}
+
+.scroll-hero::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scroll-hero::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 6px;
+}
+
 @media (max-width: 860px) {
   .sketch-frame {
     min-height: 420px;
   }
+}
+
+/* Section 4 media grid: unify heights */
+#section4 .media-grid .media img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
 }

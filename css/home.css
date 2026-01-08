@@ -210,18 +210,18 @@ body {
 /* ============================================================
    5. 错位控制 (还原手稿的高低起伏)
    ============================================================ */
-.p-thesis { margin-top: 20px; }
-.p-dating { margin-top: 60px; }
-.p-diary  { margin-top: 130px; }
-.p-hahaha { margin-top: 180px; }
-.p-wetalk { margin-top: 80px; }
-.p-filter { margin-top: 30px; }
-.p-tear   { margin-top: 220px; }
-.p-unspoken { margin-top: 110px; }
-.p-yiwenli { margin-top: 240px; }
-.p-omnivore { margin-top: -10px; }
-.p-animation { margin-top: 140px; }
-.p-poster { margin-top: 260px; }
+.p-thesis { margin-top: -10px; }
+.p-dating { margin-top: 30px; }
+.p-diary  { margin-top: 100px; }
+.p-hahaha { margin-top: 30px; }
+.p-wetalk { margin-top: 50px; }
+.p-filter { margin-top: 0px; }
+.p-tear   { margin-top: 190px; }
+.p-unspoken { margin-top: 80px; }
+.p-yiwenli { margin-top: 210px; }
+.p-omnivore { margin-top: -40px; }
+.p-animation { margin-top: 110px; }
+.p-poster { margin-top: -130px;margin-left: 40px; }
 
 /* ============================================================
    6. 装饰物
@@ -229,9 +229,10 @@ body {
 .deco-fish {
     position: absolute;
     bottom: 60px;
-    left: 60px;
+    left: 260px;
     width: 180px;
     pointer-events: none; /* 防止鱼遮挡点击 */
+    transition: transform 0.15s ease;
 }
 
 .visual-tag {

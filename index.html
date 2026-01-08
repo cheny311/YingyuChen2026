@@ -27,13 +27,15 @@
                 <h2>Chen</h2>
             </div>
 
-            <a href="about.html" class="circle about-circle">超链接<br>about me</a>
+            <a href="about.html" class="circle about-circle">about me</a>
 
             <div class="circle bio-circle">
-                自我介绍：我是一个好女孩。古今多少事，滚滚长江东逝水，浪花淘尽英雄。几度夕阳红。白发渔樵江渚上，惯看秋月春风。一壶浊酒喜相逢，古今多少事，都付笑谈中。
+                Interactive artist and creative technologist blending code, performance, and storytelling. Based in New York.
+
+Working across interactive installations, animation, and physical interfaces
             </div>
 
-            <a href="contact.html" class="circle contact-circle">和我联络吧</a>
+            <a href="contact.html" class="circle contact-circle">contact</a>
         </aside>
 
         <main class="main-content">
@@ -43,45 +45,29 @@
 </header>
 
             <div class="project-grid">
-                <!-- <a href="project-thesis.html" class="project-item p-thesis">
-                    <div class="box"></div><p>Thesis<br>我是公主</p> -->
-                </a>
-                <a href="project-dating/dating.html" class="project-item p-dating">
-                    <div class="box"></div><p>Dating Game<br>我是公主</p>
+            
+                
+                <a href="project-tabletalk/index.html" class="project-item p-dating">
+                    <div class="box"></div><p>TableTalk<br>2025</p>
                 </a>
                 <a href="project-dairy/test.html" class="project-item p-diary">
                     <div class="box"></div><p>Dear Diary<br>我是公主</p>
                 </a>
-                <!-- <a href="project-filter/facepage.html" class="project-item p-filter">
-                    <div class="box"></div><p>Filter<br>我是公主</p> 
-                </a> -->
+               
                 <a href="project-hahaha/index.html" class="project-item p-hahaha">
                     <div class="box"></div><p>Hahaha<br>我是公主</p>
                 </a>
-                <!-- <a href="project-wetalk.html" class="project-item p-wetalk">
-                    <div class="box"></div><p>Wetalk<br>我是公主</p>
+                
+                
+                <a href="project-dating/dating.html" class="project-item p-dating">
+                    <div class="box"></div><p>Dating Game<br>2024</p>
                 </a>
-                <a href="project-tear.html" class="project-item p-tear">
-                    <div class="box"></div><p>Tear Pillow<br>我是公主</p>
-                </a>
-                <a href="project-hair/losthair.html" class="project-item p-unspoken">
-                    <div class="box"></div><p>Unspoken Pain<br>我是公主</p>
-                </a>
-                <a href="project-omnivore.html" class="project-item p-omnivore">
-                    <div class="box"></div><p>杂食性<br>我是公主</p>
-                </a>
-                <a href="project-yiwenli.html" class="project-item p-yiwenli">
-                    <div class="box"></div><p>艺文力poster<br>我是公主</p>
-                </a>
-                <a href="project-animation.html" class="project-item p-animation">
-                    <div class="box"></div><p>Animation<br>我是公主</p>
-                </a> -->
                 <a href="project-tabletalk/index.html" class="project-item p-poster">
                     <div class="box"></div><p>刘雨萱poster<br>我是公主</p>
                 </a>
             </div>
 
-            <img src="fish.png" alt="fish" class="deco-fish">
+            <img src="project-filter/fish.png" alt="fish" class="deco-fish">
             <div class="visual-tag">Visual</div>
         </main>
     </div>
@@ -92,5 +78,33 @@
         <a href="readme.html">readmore</a>
     </nav>
 
+    <script>
+      (function() {
+        const fish = document.querySelector('.deco-fish');
+        if (!fish) return;
+        const strength = 0.1;
+        let targetX = 0, targetY = 0;
+        let currentX = 0, currentY = 0;
+
+        function onMove(e) {
+          const centerX = window.innerWidth / 2;
+          const centerY = window.innerHeight / 2;
+          const dx = e.clientX - centerX;
+          const dy = e.clientY - centerY;
+          targetX = dx * strength;
+          targetY = dy * strength;
+        }
+
+        function tick() {
+          currentX += (targetX - currentX) * 0.12;
+          currentY += (targetY - currentY) * 0.12;
+          fish.style.transform = `translate(${currentX}px, ${currentY}px) rotate(${currentX * 0.08}deg)`;
+          requestAnimationFrame(tick);
+        }
+
+        window.addEventListener('pointermove', onMove);
+        tick();
+      })();
+    </script>
 </body>
 </html>
