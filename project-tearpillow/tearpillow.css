@@ -37,13 +37,33 @@ body {
 }
 
 /* Keep hero video tidy */
-.hero-video .table-video {
-  width: 100%;
-  height: 100%;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
-  border: 0;
+/* Keep hero video tidy */
+/* 竖屏视频样式 */
+.hero-video.vertical .table-video {
+  width: auto; /* 不要设置 100% */
+  height: 300px; /* 设置一个固定高度 */
+  aspect-ratio: 9 / 16; /* 竖屏比例 */
+  margin: 0 auto; /* 居中显示 */
   display: block;
+  border: 0;
+  
+}
+
+/* 或者用 max-width 让它不会太宽 */
+.hero-video.vertical .table-video {
+  max-width: 400px; /* 限制最大宽度 */
+  width: 100%;
+  height: auto;
+  aspect-ratio: 9 / 16;
+  margin: 0 auto;
+  display: block;
+  
+  border: 0;
+}
+
+.hero-video.stretch-wide .table-video {
+  width: 220%;
+  margin-left: 10%; /* 居中显示 */
 }
 
 .hero-inline .hero-video {
