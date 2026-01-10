@@ -1,0 +1,245 @@
+
+
+body {
+  background: #f8f8f8;
+}
+
+.media img {
+  object-fit: cover;
+}
+
+.hero-video img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+}
+
+.hero-video iframe.vertical-fill {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 9 / 16;
+  object-fit: cover;
+}
+
+.hero-video .table-video {
+  width: 135%;
+  height: 100%;
+  min-height: 420px; /* 再拉长一点，把卡片填满 */
+  max-width: none;   /* 取消默认 480px 限制，与其他卡片等宽 */
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  padding-left: 0;
+  border: 0;
+  display: block;
+}
+
+/* 单独控制 stretch-wide 的横向偏移 */
+.hero-video.stretch-wide .table-video {
+  transform: translateX(-130px);
+}
+/* 让视频真正顶满卡片高度 */
+.hero-inline .hero-video {
+  display: flex;
+  flex-direction: column; /* 确保说明文字在视频下方 */
+  padding: 0; /* 让视频紧贴卡片边缘 */
+}
+.hero-inline .hero-video .table-video {
+  flex: 1;
+  height: 100%;
+}
+
+.hero-video iframe.vertical-fill {
+  aspect-ratio: 9 / 16;
+}
+
+.hero-inline .hero-video {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+.hero-inline .hero-video .table-video {
+  flex: 1;
+  height: 100%;
+  min-height: 480px;
+}
+
+.hero-inline .text-card p:first-child {
+  margin-bottom: 12px;
+}
+
+.media-grid .media img {
+  aspect-ratio: 1 / 1;
+}
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  grid-auto-rows: minmax(300px, auto); /* 最小高度 300px，但可自适应增长 */
+}
+
+.process-grid .media {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 所有图片统一样式 */
+.process-grid .media img {
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  transform: scale(1.15);
+  transform-origin: center;
+
+}
+
+.process-grid .media.process-tall {
+  grid-column: span 2; /* 都占两列 */
+  grid-row: span 1;
+}
+
+.process-grid .media.process-tall .table-video {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+/* Process 2 的微调 */
+.process-grid .media.process-two .table-video {
+  transform: scale(1.05);
+  margin-top: -5px;
+  margin-left: 5px;
+}
+
+/* Process 3: 和 Process 2 一样大小，只是旋转 */
+.process-grid .media.process-three {
+  grid-column: span 2;
+  grid-row: span 1;
+  overflow: hidden; /* 隐藏溢出部分 */
+}
+
+.process-grid .media.process-three .table-video {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  transform: translateY(-3px) rotate(-90deg) scale(1.9); /* 上移 2px 并旋转放大 */
+  transform-origin: center;
+
+}
+
+/* Process 1: match process4-7 sizing */
+.process-grid .media.process-one {
+  grid-column: span 1;
+  margin-top:8px;
+}
+.process-grid .media.process-one img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  transform: scale(1.25); /* 放大到 1.25 */
+  margin-top: 3px;
+}
+
+
+/* Process 4-7: 标准大小（不放大） */
+.process-grid .media.process-standard img {
+  transform: scale(1);
+}
+
+/* Process 4: 单独控制，放大到 1.25 方形 */
+.process-grid .media.process-four img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  transform: translateY(40px) scale(1.35); /* 下移一点并放大 */
+  transform-origin: center;
+ 
+}
+
+/* Process 4: 单独下移标题 10px（默认 8px，再加 10px = 18px） */
+.process-grid .media.process-four figcaption {
+  padding-top:85px; /* 再下移 5px */
+}
+
+/* Process 1: 单独控制标题位置 */
+.process-grid .media.process-one figcaption {
+   padding-top: 32px;
+  display: block;
+  transform: none;
+}
+
+/* Process 5-7: 独立控制标题位置 */
+.process-grid .media.process-standard figcaption {
+  /* margin-top: 10px; 可按需调：10px / 12px / 15px */
+  line-height: 0.8;
+  text-align: left;
+transform: translateY(-5px);
+}
+
+/* 默认所有 figcaption */
+.process-grid .media figcaption {
+  text-align: left;
+  line-height: 1.4;
+  flex-shrink: 0;
+}
+
+/* Process 2 和 3 保持原样 */
+.process-grid .media.process-two figcaption,
+.process-grid .media.process-three figcaption {
+  margin-top: 13px; /* 下移 5px */
+}
+
+/* Process 2: 单独调整标题位置 */
+.process-grid .media.process-two figcaption {
+  margin-top: 12px; /* 按需改大/改小来上下移动 */
+}
+
+/* 单独调整 Process 1 和 Process 4-7 */
+@media (max-width: 900px) {
+  .process-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .process-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* ===== Remove the inner gray box inside media cards ===== */
+figure.media {
+  padding: 0 !important;          /* 去掉内边距（灰色内框常见来源） */
+  background: transparent !important;
+}
+
+/* 图片/视频顶到外框，不留灰底 */
+figure.media > img,
+figure.media > iframe,
+figure.media > video {
+  display: block;
+  width: 100%;
+  margin: 0 !important;
+  background: transparent !important;
+}
+
+/* caption 不要像一个“独立的小框” */
+figure.media > figcaption {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  margin: 0 !important;
+  padding: 10px 12px; /* 你想更贴就调小，比如 8px 10px */
+}
+.process-grid .media.process-standard {
+  min-height: 310px; /* 自己设一个高度，只影响 5/6/7 */
+}
+.process-grid .media.process-standard img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
