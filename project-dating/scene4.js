@@ -308,7 +308,8 @@ class Scene4 {
     instructions.parent(parentId);
     instructions.class("section-title");
     instructions.style("position", "absolute");
-    instructions.style("font-size", "18px");
+    instructions.style("font-family", "Tomorrow, 'Noto Sans SC', sans-serif");
+    instructions.style("font-size", "14px");
     instructions.style("max-width", "480px");
     this.uiExtras.push(instructions);
     currentY += 35;
@@ -324,6 +325,7 @@ class Scene4 {
     this.camBtn.parent(parentId);
     this.camBtn.class("control-btn");
     this.camBtn.style("position", "absolute");
+    this.camBtn.style("font-family", "Tomorrow, 'Noto Sans SC', sans-serif");
     this.camBtn.mousePressed(() => this.startCamera());
     this.setButtonSize(this.camBtn, buttonWidth, buttonHeight);
 
@@ -331,6 +333,7 @@ class Scene4 {
     this.snapBtn.parent(parentId);
     this.snapBtn.class("control-btn accent");
     this.snapBtn.style("position", "absolute");
+    this.snapBtn.style("font-family", "Tomorrow, 'Noto Sans SC', sans-serif");
     this.snapBtn.mousePressed(() => this.takePhoto());
     this.snapBtn.hide();
     this.setButtonSize(this.snapBtn, buttonWidth, buttonHeight);
@@ -340,6 +343,8 @@ class Scene4 {
     quickLabel.parent(parentId);
     quickLabel.class("section-title");
     quickLabel.style("position", "absolute");
+    quickLabel.style("font-family", "Tomorrow, 'Noto Sans SC', sans-serif");
+    quickLabel.style("font-size", "13px");
     this.uiExtras.push(quickLabel);
     currentY += 30;
 
@@ -347,6 +352,7 @@ class Scene4 {
     this.rotateLeftBtn.parent(parentId);
     this.rotateLeftBtn.class("control-btn quick-btn");
     this.rotateLeftBtn.style("position", "absolute");
+    this.rotateLeftBtn.style("font-family", "Tomorrow, 'Noto Sans SC', sans-serif");
     this.rotateLeftBtn.mousePressed(() => this.rotateImage(-15));
     this.setButtonSize(this.rotateLeftBtn, quickButtonWidth, quickButtonHeight);
 
@@ -354,6 +360,7 @@ class Scene4 {
     this.rotateRightBtn.parent(parentId);
     this.rotateRightBtn.class("control-btn quick-btn");
     this.rotateRightBtn.style("position", "absolute");
+    this.rotateRightBtn.style("font-family", "Tomorrow, 'Noto Sans SC', sans-serif");
     this.rotateRightBtn.mousePressed(() => this.rotateImage(15));
     this.setButtonSize(this.rotateRightBtn, quickButtonWidth, quickButtonHeight);
 
@@ -363,6 +370,7 @@ class Scene4 {
     this.flipBtn.parent(parentId);
     this.flipBtn.class("control-btn quick-btn");
     this.flipBtn.style("position", "absolute");
+    this.flipBtn.style("font-family", "Tomorrow, 'Noto Sans SC', sans-serif");
     this.flipBtn.mousePressed(() => this.flipImage());
     this.setButtonSize(this.flipBtn, quickButtonWidth, quickButtonHeight);
 
@@ -370,6 +378,7 @@ class Scene4 {
     this.resetBtn.parent(parentId);
     this.resetBtn.class("control-btn quick-btn");
     this.resetBtn.style("position", "absolute");
+    this.resetBtn.style("font-family", "Tomorrow, 'Noto Sans SC', sans-serif");
     this.resetBtn.mousePressed(() => this.resetPosition());
     this.setButtonSize(this.resetBtn, quickButtonWidth, quickButtonHeight);
 
@@ -379,6 +388,8 @@ class Scene4 {
     adjustLabel.parent(parentId);
     adjustLabel.class("section-title");
     adjustLabel.style("position", "absolute");
+    adjustLabel.style("font-family", "Tomorrow, 'Noto Sans SC', sans-serif");
+    adjustLabel.style("font-size", "13px");
     this.uiExtras.push(adjustLabel);
     currentY += 30;
 
@@ -386,6 +397,8 @@ class Scene4 {
     this.widthLabelEl.parent(parentId);
     this.widthLabelEl.class("slider-label");
     this.widthLabelEl.style("position", "absolute");
+    this.widthLabelEl.style("font-family", "Tomorrow, 'Noto Sans SC', sans-serif");
+    this.widthLabelEl.style("font-size", "11px");
     currentY += 20;
 
     this.widthSlider = createSlider(80, 6000, this.userImgW, 10);
@@ -399,6 +412,8 @@ class Scene4 {
     this.heightLabelEl.parent(parentId);
     this.heightLabelEl.class("slider-label");
     this.heightLabelEl.style("position", "absolute");
+    this.heightLabelEl.style("font-family", "Tomorrow, 'Noto Sans SC', sans-serif");
+    this.heightLabelEl.style("font-size", "11px");
     currentY += 20;
 
     this.heightSlider = createSlider(80, 6000, this.userImgH, 10);
@@ -412,6 +427,8 @@ class Scene4 {
     this.rotationLabelEl.parent(parentId);
     this.rotationLabelEl.class("slider-label");
     this.rotationLabelEl.style("position", "absolute");
+    this.rotationLabelEl.style("font-family", "Tomorrow, 'Noto Sans SC', sans-serif");
+    this.rotationLabelEl.style("font-size", "11px");
     currentY += 20;
 
     this.rotationSlider = createSlider(-180, 180, this.userImgRotation, 5);
@@ -428,28 +445,35 @@ class Scene4 {
     this.xPosLabelEl.parent(parentId);
     this.xPosLabelEl.class("slider-label");
     this.xPosLabelEl.style("position", "absolute");
+    this.xPosLabelEl.style("font-family", "Tomorrow, 'Noto Sans SC', sans-serif");
+    this.xPosLabelEl.style("font-size", "11px");
 
     this.xPosSlider = createSlider(-2000, 2000, this.imgOffsetX, 5);
     this.xPosSlider.parent(parentId);
     this.xPosSlider.class("control-slider");
     this.xPosSlider.style("position", "absolute");
+    this.xPosSlider.style("width", "180px");
     this.xPosSlider.input(() => this.handleXPosSlider());
 
     this.yPosLabelEl = createElement("div", `Y Position: ${this.imgOffsetY}px`);
     this.yPosLabelEl.parent(parentId);
     this.yPosLabelEl.class("slider-label");
     this.yPosLabelEl.style("position", "absolute");
+    this.yPosLabelEl.style("font-family", "Tomorrow, 'Noto Sans SC', sans-serif");
+    this.yPosLabelEl.style("font-size", "11px");
 
     this.yPosSlider = createSlider(-2000, 2000, this.imgOffsetY, 5);
     this.yPosSlider.parent(parentId);
     this.yPosSlider.class("control-slider");
     this.yPosSlider.style("position", "absolute");
+    this.yPosSlider.style("width", "180px");
     this.yPosSlider.input(() => this.handleYPosSlider());
 
     this.saveBtn = createButton("Save Photo");
     this.saveBtn.parent(parentId);
     this.saveBtn.class("control-btn save");
     this.saveBtn.style("position", "absolute");
+    this.saveBtn.style("font-family", "Tomorrow, 'Noto Sans SC', sans-serif");
     this.saveBtn.mousePressed(() => saveCanvas("our_wedding_photo", "png"));
     this.setButtonSize(this.saveBtn, buttonWidth, buttonHeight);
 
@@ -457,6 +481,7 @@ class Scene4 {
     this.backBtn.parent(parentId);
     this.backBtn.class("control-btn secondary");
     this.backBtn.style("position", "absolute");
+    this.backBtn.style("font-family", "Tomorrow, 'Noto Sans SC', sans-serif");
     this.backBtn.mousePressed(() => switchScene(0));
     this.setButtonSize(this.backBtn, buttonWidth, buttonHeight);
 
@@ -500,23 +525,23 @@ class Scene4 {
       let instructions = this.uiExtras[0];
       if (instructions) instructions.position(startX, y);
     }
-    y += 35;
+    y += 28;
 
     // file input
     this.fileInput.position(startX, y);
-    y += 50;
+    y += 40;
 
     // camera buttons
     this.camBtn.position(startX, y);
     this.snapBtn.position(startX + rowSpacing, y);
-    y += buttonHeight + 30;
+    y += buttonHeight + 22;
 
     // quick label
     if (this.uiExtras && this.uiExtras.length > 1) {
       let quickLabel = this.uiExtras[1];
       if (quickLabel) quickLabel.position(startX, y);
     }
-    y += 30;
+    y += 24;
 
     // quick buttons row 1
     this.rotateLeftBtn.position(startX, y);
@@ -527,30 +552,30 @@ class Scene4 {
     this.flipBtn.position(startX, quickSecondRowY);
     this.resetBtn.position(startX + quickSpacing, quickSecondRowY);
 
-    y = quickSecondRowY + quickButtonHeight + 30;
+    y = quickSecondRowY + quickButtonHeight + 20;
 
     // fine tuning label
     if (this.uiExtras && this.uiExtras.length > 2) {
       let adjustLabel = this.uiExtras[2];
       if (adjustLabel) adjustLabel.position(startX, y);
     }
-    y += 30;
+    y += 24;
 
     // width
     this.widthLabelEl.position(startX, y);
-    y += 20;
+    y += 16;
     this.widthSlider.position(startX, y);
-    y += 40;
+    y += 32;
 
     // height
     this.heightLabelEl.position(startX, y);
-    y += 20;
+    y += 16;
     this.heightSlider.position(startX, y);
-    y += 40;
+    y += 32;
 
     // rotation
     this.rotationLabelEl.position(startX, y);
-    y += 20;
+    y += 16;
     this.rotationSlider.position(startX, y);
 
     // RIGHT SIDE layout: X/Y sliders should be above Save Photo
@@ -570,7 +595,7 @@ class Scene4 {
     let sliderBlockW = 200;
     let sliderLeft = saveBtnX + (buttonWidth - sliderBlockW) / 2;
 
-    let xyTop = saveBtnY - 140; // put above save
+    let xyTop = saveBtnY - 120; // put above save
     this.xPosLabelEl.position(sliderLeft, xyTop);
     this.xPosSlider.position(sliderLeft, xyTop + 22);
 
@@ -864,14 +889,14 @@ class Scene4 {
 
   computeButtonMetrics() {
     let maxWidth = width * 0.25;
-    let buttonWidth = Math.min(200, maxWidth);
-    let buttonHeight = 44;
-    let rowSpacing = buttonWidth + 20;
+    let buttonWidth = Math.min(200, maxWidth) * 0.55; // 再缩小约 45%
+    let buttonHeight = 44 * 0.55;
+    let rowSpacing = buttonWidth + 12;
 
     let quickButtonWidth = Math.min(Math.max(90, buttonWidth * 0.7), maxWidth);
-    let quickButtonHeight = Math.max(32, buttonHeight - 10);
-    let quickSpacing = quickButtonWidth + 16;
-    let quickRowGap = 12;
+    let quickButtonHeight = Math.max(32 * 0.55, buttonHeight - 6);
+    let quickSpacing = quickButtonWidth + 10;
+    let quickRowGap = 8;
 
     return {
       buttonWidth,
@@ -894,6 +919,11 @@ class Scene4 {
     btn.style("height", targetHeight + "px");
     btn.style("line-height", targetHeight + "px");
     btn.style("box-sizing", "border-box");
+    btn.style("font-size", Math.max(11, targetHeight * 0.45) + "px");
+    btn.style("padding", "3px 6px");
+    btn.style("border", "1px dashed #555");
+    btn.style("background", "#fefefe");
+    btn.style("border-radius", "6px");
   }
 
   updateWidthLabel(value = this.userImgW) {
